@@ -1,0 +1,99 @@
+version: "3"
+
+services:
+  rstudio:
+    container_name: ds_rstudio_container
+    restart: always
+    build:
+      context: ./R_env
+      # image:ds_r:v1
+    volumes:
+      - ./../main:/home/rstudio/main
+      - ./../playground:/home/rstudio/playground
+      - ./../data:/home/rstudio/data
+      - ./../src:/home/rstudio/src
+      - ./../reports:/rstudio/reports
+      - ./../docker_env/R_env:/rstudio/env
+    ports:
+      - "8787:8787"
+    environment:
+      DISABLE_AUTH: "TRUE"
+      ROOT: "TRUE"
+      TZ: Asia/Tokyo
+  jupyter:
+    container_name: ds_jupyter_container
+    restart: always
+    build:
+      context: ./python_env
+    image: ds_jupyter:v1
+    volumes:
+      - ./../main:/root/main
+      - ./../template:/root/template
+      - ./../playground:/root/playground
+      - ./../data:/root/data
+      - ./../src:/root/src
+      - ./../reports:/root/reports
+      - ./../docker_env/python_env:/root/env
+    ports:
+      - "8888:8888"
+    environment:
+      ROOT: "TRUE"
+      TZ: Asia/Tokyo
+    command: "/opt/conda/bin/jupyter lab --notebook-dir=/root"
+#   postgres:
+#     container_name: ds_postgres_container
+#     restart: always
+#     image: postgres:latest
+#     networks:
+#       ds_net:
+#         ipv4_address: 172.28.1.2
+#     environment:
+#       POSTGRES_DB: mydb
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgres
+#       TZ: Asia/Tokyo
+#     ports:
+#       - 5432:5432
+#     volumes:
+#       - ./../data/db:/var/lib/postgresql/data
+#     # - ./../data/db_init:/docker-entrypoint-initdb.d/
+#   pgAdmin:
+#     container_name: ds_pgAdmin_container
+#     image: dpage/pgadmin4
+#     networks:
+#       ds_net:
+#         ipv4_address: 172.28.1.3
+#     restart: always
+#     ports:
+#       # - "8000:80"
+#       - "80:80"
+#     environment:
+#       PGADMIN_DEFAULT_EMAIL: pgadmin
+#       PGADMIN_DEFAULT_PASSWORD: pgadmin
+#       TZ: Asia/Tokyo
+#     volumes:
+#       - ./../data/db_conf/servers.json:/pgadmin4/servers.json
+#     # - ./../data/db_conf:/var/lib/pgadmin
+#     # - ./../data/db_conf/pgadmin:/var/lib/pgadmin
+#     # - ./../data/db:/root/.pgadmin
+#     # - /path/to/certificate.cert:/certs/server.cert \
+#     # - /path/to/certificate.key:/certs/server.key \
+#     #
+#   pgweb:
+#     container_name: ds_pgweb_container
+#     restart: always
+#     image: sosedoff/pgweb
+#     networks:
+#       ds_net:
+#         ipv4_address: 172.28.1.5
+#     ports:
+#       - "8081:8081"
+#     environment:
+#       - DATABASE_URL=postgres://postgres:postgres@172.28.1.2:5432/postgres?sslmode=disable
+#
+# networks:
+#   ds_net:
+#     ipam:
+#       driver: default
+#       config:
+#         - subnet: 172.28.0.0/16

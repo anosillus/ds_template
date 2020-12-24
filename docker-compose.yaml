@@ -1,0 +1,17 @@
+version: "3"
+services:
+  jupyter:
+    build:
+      context: ./docker
+    image: my_jupyter:v12
+    volumes:
+      - ./playground:/home/playground
+      - ./data:/home/data
+      - ./src:/home/src
+      - ./models:/home/models
+      - ./reports:/home/reports
+      - ./references:/home/references
+      - ./figures:/home/figures
+    ports:
+      - 10000:8888
+    command: "jupyter lab"

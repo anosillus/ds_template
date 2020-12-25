@@ -1,45 +1,61 @@
-name: python38
+name: python39
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - autopep8
-  - black
-  - bokeh
-  - category_encoders
-  - cython
-  - feather-format
-  - flake8
-  - flake8-import-order
-  - graphviz
-  - imbalanced-learn
-  - isort
-  - lightgbm
-  - matplotlib
-  - missingno
-  - nbdime
-  - networkx
-  - numba
-  - numpy
-  - pandas
-  - pathlib2
-  - pep8
-  - pip=20.*
-  - python-graphviz
-  - python=3.8.*
-  - requests
-  - rpy2
-  - scikit-learn
-  - scipy
-  - seaborn
-  - statsmodels
-  - tqdm
-  - watermark
+ - python=3.9.*
+ - autopep8
+ - black
+ - bokeh
+ - category_encoders
+ - cython
+ - feather-format
+ - flake8
+ - flake8-import-order
+ - graphviz
+ - hydra
+ - imbalanced-learn
+ - iplantuml
+ - ipympl
+ - ipywidgets
+ - isort
+ - japanize_matplotlib
+ - jupyter-lsp
+ - jupyterhub
+ - jupyterlab
+ - jupyterlab-git
+ - jupyterlab_templates
+ - lightgbm
+ - lxml
+ - matplotlib
+ - mlflow
+ - nbdime
+ - networkx
+ - nodejs
+ - numpy
+ - numpy
+ - omegaconf
+ - optuna
+ - pandas
+ - pathlib2
+ - pep8
+ - pip=20.*
+ - pytest
+ - python-graphviz
+ - python-language-server[all]
+ - pytype
+ - pytype
+ - requests
+ - rpy2
+ - scikit-learn
+ - scipy
+ - seaborn
+ - seaborn
+ - statsmodels
+ - tqdm
+ - watermark
   - pip:
-      - causalml
       - lxml
       - iplantuml
       - japanize_matplotlib
-      - kaggle-cli
-      - optuna
 prefix: /opt/conda/envs/python38

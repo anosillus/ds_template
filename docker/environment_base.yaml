@@ -3,59 +3,32 @@ channels:
   - conda-forge
   - defaults
 dependencies:
- - python=3.9.*
- - autopep8
- - black
- - bokeh
- - category_encoders
- - cython
- - feather-format
- - flake8
- - flake8-import-order
- - graphviz
- - hydra
- - imbalanced-learn
- - iplantuml
- - ipympl
- - ipywidgets
- - isort
- - japanize_matplotlib
- - jupyter-lsp
- - jupyterhub
- - jupyterlab
- - jupyterlab-git
- - jupyterlab_templates
- - lightgbm
- - lxml
- - matplotlib
- - mlflow
- - nbdime
- - networkx
- - nodejs
- - numpy
- - numpy
- - omegaconf
- - optuna
- - pandas
- - pathlib2
- - pep8
- - pip=20.*
- - pytest
- - python-graphviz
- - python-language-server[all]
- - pytype
- - pytype
- - requests
- - rpy2
- - scikit-learn
- - scipy
- - seaborn
- - seaborn
- - statsmodels
- - tqdm
- - watermark
+  - python=3.9.*
+  - category_encoders
+  - cython
+  - feather-format
+  - hydra
+  - imbalanced-learn
+  - ipympl
+  - ipywidgets
+  - lightgbm
+  - matplotlib
+  - numpy
+  - omegaconf
+  - pandas
+  - pathlib2
+  - pip=20.*
+  - requests
+  - scikit-learn
+  - scipy
+  - seaborn
+  - statsmodels
+  - tqdm
+  - watermark
+  - xgboost
   - pip:
-      - lxml
-      - iplantuml
+      - mlflow
+      - optuna
       - japanize_matplotlib
-prefix: /opt/conda/envs/python38
+      - iplantuml
+prefix: /opt/conda/envs/python39

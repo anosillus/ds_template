@@ -72,7 +72,7 @@ RUN mkdir -p /home/.jupyter && { \
     echo "c.LatexConfig.latex_command = 'xetex'"; \
     } | tee /home/.jupyter/jupyter_notebook_config.py
 
-RUN conda install -c conda-forge jupyterlab jupyterlab-git jupyter-lsp nodejs python-language-server ipympl jupyterhub nbdime jupyterlab_templates ipywidgets && \
+RUN conda install -c conda-forge jupyterlab jupyterlab-git jupyter-lsp nodejs python-language-server ipympl jupyterhub nbdime jupyterlab_templates ipywidgets pytest pytype && \
     # conda install -c anaconda libxml2 ipykernel && \
     jupyter labextension install nbdime-jupyterlab --no-build && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
@@ -112,6 +112,7 @@ RUN apt-get update --fix-missing && \
     touch /home/.config/fish/fish.config && \
     echo "source /opt/conda/etc/fish/conf.d/conda.fish" >> /home/.config/fish/fish.config && \
     echo "conda activate $(head -1 /tmp/environment_base.yaml | cut -d' ' -f2 | tr -d '\r')" >> /home/.config/fish/fish.config
+
 
 SHELL ["/bin/bash", "-c"]
 ENV BASH_ENV /home/.bashrc
